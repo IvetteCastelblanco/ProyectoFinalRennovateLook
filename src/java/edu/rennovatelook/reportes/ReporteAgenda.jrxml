@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="0" uuid="d05cd49c-9da4-4954-989e-b66fab06c14a">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Title" fontName="Arial" fontSize="26" isBold="true" pdfFontName="Helvetica-Bold"/>
+	<style name="SubTitle" forecolor="#666666" fontName="Arial" fontSize="18"/>
+	<style name="Column header" forecolor="#FFFFFF" fontName="Arial" fontSize="12" isBold="true"/>
+	<style name="Detail" fontName="Arial" fontSize="12"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT
+     citas.`fecha_cita` AS citas_fecha_cita,
+     citas.`descripcion_cita` AS citas_descripcion_cita,
+     citas.`id_fk_cliente` AS citas_id_fk_cliente,
+     citas.`id_fk_estilista` AS citas_id_fk_estilista,
+     citas.`id_fk_producto` AS citas_id_fk_producto,
+     citas.`id_fk_empleado` AS citas_id_fk_empleado
+FROM
+     `citas` citas]]>
+	</queryString>
+	<field name="citas_fecha_cita" class="java.sql.Timestamp"/>
+	<field name="citas_descripcion_cita" class="java.lang.String"/>
+	<field name="citas_id_fk_cliente" class="java.lang.Integer"/>
+	<field name="citas_id_fk_estilista" class="java.lang.Integer"/>
+	<field name="citas_id_fk_producto" class="java.lang.Integer"/>
+	<field name="citas_id_fk_empleado" class="java.lang.Integer"/>
+	<background>
+		<band height="575" splitType="Stretch">
+			<image>
+				<reportElement x="15" y="453" width="217" height="106" uuid="f5e64b69-aa19-4024-995a-d73c449c56d2"/>
+				<imageExpression><![CDATA["C:\\Users\\IVETH CASTELBLANCO\\Downloads\\RennovateLooks\\web\\img\\Logo2.jpg"]]></imageExpression>
+			</image>
+			<image>
+				<reportElement x="319" y="325" width="683" height="207" uuid="93a26f5d-e045-415a-b925-ae4bb247f0ba"/>
+				<imageExpression><![CDATA["C:\\Users\\IVETH CASTELBLANCO\\Downloads\\citas.jpg"]]></imageExpression>
+			</image>
+		</band>
+	</background>
+	<title>
+		<band height="104" splitType="Stretch">
+			<staticText>
+				<reportElement style="Title" x="0" y="0" width="635" height="67" uuid="52ed1152-3f0f-4a4c-8679-0b2452a3bbc2"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="54" isBold="false" pdfFontName="Helvetica"/>
+				</textElement>
+				<text><![CDATA[Reporte de Citas ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="SubTitle" x="162" y="67" width="560" height="37" uuid="0be56502-d0c2-4761-9f2c-78d2f365d90b"/>
+				<textElement textAlignment="Right">
+					<font size="26"/>
+				</textElement>
+				<text><![CDATA[Generado Por: Jhon Mahecha]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="25" splitType="Stretch">
+			<frame>
+				<reportElement mode="Opaque" x="97" y="5" width="705" height="20" backcolor="#666666" uuid="517189ff-7f2b-4ba0-98ca-fb881f8f8b2c"/>
+				<staticText>
+					<reportElement style="Column header" x="0" y="0" width="117" height="15" uuid="310d07d1-7b67-49da-b488-3e110339abcf"/>
+					<text><![CDATA[Fecha Cita]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="Column header" x="118" y="0" width="117" height="15" uuid="428c9e85-c57c-447a-a60c-f9ea5bba596a"/>
+					<text><![CDATA[Descripcion Cita]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="Column header" x="234" y="0" width="117" height="15" uuid="9a39fdf5-e77d-4872-a386-3c367397eedd"/>
+					<text><![CDATA[Id Cliente]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="Column header" x="351" y="0" width="117" height="15" uuid="cc43e7ea-9983-4144-bbe3-a0a374fae6a8"/>
+					<text><![CDATA[Id Estilista]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="Column header" x="468" y="0" width="117" height="15" uuid="43b7ba1d-cdf3-44c4-abe4-ca61e2048da1"/>
+					<text><![CDATA[Id Producto]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="Column header" x="585" y="0" width="117" height="15" uuid="400cf619-f76d-4379-9ff1-40dca6c7a658"/>
+					<text><![CDATA[Id Empleado]]></text>
+				</staticText>
+			</frame>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="21" splitType="Stretch">
+			<frame>
+				<reportElement x="97" y="1" width="705" height="15" uuid="a02c2b8b-d342-4792-a59d-7813e7a1db5b"/>
+				<textField>
+					<reportElement style="Detail" x="0" y="0" width="117" height="15" uuid="b7ca339a-f528-4501-b52a-2ce060789081"/>
+					<textFieldExpression><![CDATA[$F{citas_fecha_cita}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement style="Detail" x="117" y="0" width="117" height="15" uuid="46d32bad-d72e-412d-85ad-a32f21b6164e"/>
+					<textFieldExpression><![CDATA[$F{citas_descripcion_cita}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement style="Detail" x="234" y="0" width="117" height="15" uuid="b80c327a-d325-4a7f-9fa4-a17c0ca43f51"/>
+					<textFieldExpression><![CDATA[$F{citas_id_fk_cliente}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement style="Detail" x="351" y="0" width="117" height="15" uuid="48146974-2c04-4b2a-8acb-0093749d4e05"/>
+					<textFieldExpression><![CDATA[$F{citas_id_fk_estilista}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement style="Detail" x="468" y="0" width="117" height="15" uuid="63c37961-ba0e-4114-858c-24f62d87ab22"/>
+					<textFieldExpression><![CDATA[$F{citas_id_fk_producto}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement style="Detail" x="585" y="0" width="117" height="15" uuid="37f472c8-cf99-4748-9915-4dbda1c813e1"/>
+					<textFieldExpression><![CDATA[$F{citas_id_fk_empleado}]]></textFieldExpression>
+				</textField>
+			</frame>
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="97" y="16" width="705" height="1" uuid="4daaace6-2d4e-402f-9587-ee302d8f2cd6"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="39" splitType="Stretch">
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement style="Column header" x="671" y="0" width="131" height="20" forecolor="#000000" uuid="b17c5f71-acc0-4947-a920-9c9821548db1"/>
+				<textElement textAlignment="Right">
+					<font size="12" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="96" y="0" width="267" height="20" uuid="7c4d98b1-439e-4bc7-bdc4-6ae987bcc4f8"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

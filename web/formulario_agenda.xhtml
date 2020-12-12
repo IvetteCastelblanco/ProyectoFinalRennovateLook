@@ -26,8 +26,13 @@
         <link rel="stylesheet" href="../css/sb-admin-2.css"/>
 
         <script src="../js/sweetalert2.min.js"></script>
-        <script src="../js/jquery-3.4.1.min.js"></script>
+
         <script src="../js/bootstrap-datepicker.min.js"></script>
+        <style type="text/css">
+            .ui-growl {
+                top:150px;
+            }
+        </style>
 
 
     </h:head>
@@ -367,33 +372,46 @@
                                     </div>
                                     <br/>
                                     <div class="row form-group">
+
                                         <label for="nombre" class="col-form-label col-md-4"><b>Id. Cliente: *</b></label>
                                         <div class="col-md-8">
-                                            <p:inputText value="#{agendaControlador.cliente}" />
+
+                                            <p:selectOneMenu value="#{agendaControlador.cliente}">
+                                                <f:selectItems value="#{agendaControlador.listaCliente}" var="ls" itemLabel="#{ls.nombresCliente}#{ls.apellidosCliente}" itemValue="#{ls.idCliente}"></f:selectItems>
+                                            </p:selectOneMenu>
+
                                         </div>
                                     </div>
                                     <div class="row form-group">
                                         <label for="nombre" class="col-form-label col-md-4"><b>Id. Producto: *</b></label>
-                                        <div class="col-md-8">
-                                            <p:inputText value="#{agendaControlador.producto}" />
+                                        <div class="col-md-4">
+                                            <p:selectOneMenu value="#{agendaControlador.producto}">
+                                                <f:selectItems value="#{agendaControlador.listaProduct}" var="lp" itemLabel="#{lp.nombreProducto}" itemValue="#{lp.idProducto}"></f:selectItems>
+                                            </p:selectOneMenu> 
                                         </div>
                                     </div>
                                     <div class="row form-group">
                                         <label for="nombre" class="col-form-label col-md-4"><b>Id. Estilista: *</b></label>
                                         <div class="col-md-8">
-                                            <p:inputText value="#{agendaControlador.estilis}" />
+                                            <p:selectOneMenu value="#{agendaControlador.estilis}">
+                                                <f:selectItems value="#{agendaControlador.listaEstilis}" var="es" itemLabel="#{es.nombresEstilista}#{es.apellidosEstilista}" itemValue="#{es.idEstilista}"></f:selectItems>
+                                            </p:selectOneMenu> 
                                         </div>
                                     </div>
                                     <div class="row form-group">
                                         <label for="estado" class="col-form-label col-md-4"><b>Id. Empleado: *</b></label>
+
                                         <div class="col-md-8">
-                                            <p:inputText value="#{agendaControlador.empl}" />
+                                            <p:selectOneMenu value="#{agendaControlador.empl}">
+                                                <f:selectItems value="#{agendaControlador.listaEmpl}" var="e" itemLabel="#{e.nombresEmpleado}#{e.apellidosEmpleado}" itemValue="#{e.idEmpleado}"></f:selectItems>
+                                            </p:selectOneMenu> 
+
                                         </div>
                                     </div>
                                     <br/>
                                     <div class="form-group">
                                         <div class="col-xs-offset-3 col-xs-9">
-                                            <p:commandButton value="Enviar" action="#{agendaControlador.crearAgenda()}"/>
+                                            <p:commandButton value="Enviar" update="agenda" action="#{agendaControlador.crearAgenda()}"/>
                                             <input type="reset" class="btn btn-default" value="Limpiar"/>
                                         </div>
                                     </div>
@@ -404,20 +422,21 @@
                 </div>
             </div>
         </div>
-        <!-- Bootstrap core JavaScript-->
-        <script src="../js/calendario.js"></script>
-        <script src="../js/validar.js"></script>
-        <script src="../vendor/jquery/jquery.min.js"></script>
-        <script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
-        <!-- Core plugin JavaScript-->
-        <script src="../vendor/jquery-easing/jquery.easing.min.js"></script>
-
-
-        <!-- Custom scripts for all pages-->
-        <script src="../js/sb-admin-2.min.js"></script>
 
     </h:body>
+
+    <!-- Bootstrap core JavaScript-->
+    <script src="../js/calendario.js"></script>
+    <script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Core plugin JavaScript-->
+    <script src="../vendor/jquery-easing/jquery.easing.min.js"></script>
+
+    <!-- Custom scripts for all pages-->
+    <script src="../js/sb-admin-2.min.js"></script>
+
+    <!-- Page level custom scripts -->
+    <script src="../js/validar.js"></script>
 
 
 </html>

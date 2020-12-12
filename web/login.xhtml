@@ -2,6 +2,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:html5="http://xmlns.jcp.org/jsf/passthrough"
       xmlns:p="http://primefaces.org/ui">
 
     <h:head>
@@ -56,8 +57,8 @@
                         <h2>Iniciar sesión</h2>
                         <h:form id="formLogin">                            
                             <p:growl id="growlFormLogin" showDetail="true" sticky="true" />
-                            <p:inputText id="username" value="#{loginControlador.idEmpleado}"  required="true"></p:inputText>
-                            <p:password id="password" value="#{loginControlador.claveEmpleado}" required="true" feedback="false"></p:password>
+                            <p:inputText id="username" value="#{loginControlador.idEmpleado}" html5:placeholder="Ingrese su Identificación" required="true" requiredMessage="Campo identificación obligatorio" ></p:inputText>
+                            <p:password id="password" value="#{loginControlador.claveEmpleado}" html5:placeholder="Ingrese su Contraseña" required="true" requiredMessage="Campo contraseña obligatorio" feedback="false"></p:password>
                             <p:commandButton action="#{loginControlador.validarEmpleado()}" value="Ingresar" update="formLogin" ajax="true"></p:commandButton>                            
                         </h:form>
                     </div>
@@ -67,10 +68,10 @@
                      
                             <h:form id="formRegistrarEmpleado">             
                                 <p:growl id="growlFormRegistrarEmpleado" showDetail="true" sticky="true" />
-                                <p:inputText id="txtIdUsuario" value="#{loginControlador.idEmpleado}" required="true" ></p:inputText>
-                                <p:password id="txtClaveUsuario" value="#{loginControlador.claveEmpleado}"  feedback="false"></p:password>
-                                <p:inputText id="txtEmailUsuario" value="#{loginControlador.emailEmpleado}" ></p:inputText>
-                                <p:inputText id="txtTelefonoUsuario" value="#{loginControlador.telefonoEmpleado}" ></p:inputText>
+                                <p:inputText id="txtIdUsuario" value="#{loginControlador.idEmpleado}" html5:placeholder="Ingrese su Identificación" required="true" ></p:inputText>
+                                <p:password id="txtClaveUsuario" value="#{loginControlador.claveEmpleado}" html5:placeholder="Ingrese su Clave" feedback="false"></p:password>
+                                <p:inputText id="txtEmailUsuario" value="#{loginControlador.emailEmpleado}" html5:placeholder="Ingrese su Correo" ></p:inputText>
+                                <p:inputText id="txtTelefonoUsuario" value="#{loginControlador.telefonoEmpleado}" html5:placeholder="Ingrese su Télefono" ></p:inputText>
 
                                 <p:commandButton action="#{loginControlador.crearEmpleado()}" value="Registrar" update="formRegistrarEmpleado" ajax="true"></p:commandButton>
                             </h:form>
@@ -78,7 +79,7 @@
                     </div>
 
                     <div class="reset-password">
-                        <a href="#">Olvide mi contraseña?</a>
+                        <a href="forgotPassword.xhtml">Olvide mi contraseña?</a>
                     </div>
                 </div>
             </div>

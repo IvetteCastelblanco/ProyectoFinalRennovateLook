@@ -26,7 +26,6 @@
 
         <!-- Script -->
         <script src="../js/sweetalert2.min.js"></script>
-        <script src="../js/jquery-3.4.1.min.js"></script>
         <script src="../datepicker/js/bootstrap-datepicker.min.js"></script>
 
     </h:head>
@@ -312,7 +311,7 @@
                             <!-- Elemento de navegación: información del usuario -->
                             <li class="nav-item dropdown no-arrow">
                                 <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <span class="mr-2 d-none d-lg-inline text-gray-600 small">Jhon Mahecha</span>
+                                    <span class="mr-2 d-none d-lg-inline text-gray-600 small">Ivette Castelblanco</span>
                                     <img class="img-profile rounded-circle" src="../img/Servicios/imagen-7.jpeg"/>
                                 </a>
                                 <!-- Desplegable - Información del usuario -->
@@ -367,7 +366,9 @@
                                     <div class="row form-group">
                                         <label for="nombre" class="col-form-label col-md-4"><b>Identificacion del cliente: *</b></label>
                                         <div class="col-md-8">
-                                            <p:inputText value="#{ventaControlador.idCliente}" />
+                                            <p:selectOneMenu value="#{ventaControlador.cliente}">
+                                                <f:selectItems value="#{ventaControlador.listaCliente}" var="lc" itemLabel="#{lc.nombresCliente}#{lc.apellidosCliente}" itemValue="#{lc.idCliente}"></f:selectItems>
+                                            </p:selectOneMenu>
                                         </div>
                                     </div>
                                     <div class="row form-group">
@@ -395,7 +396,7 @@
                                     <br/>  
                                     <div class="form-group">
                                         <div class="col-xs-offset-3 col-xs-9">
-                                            <p:commandButton value="Enviar"  action="#{ventaControlador.crearVenta()}" styleClass="ui-priority-primary" />
+                                            <p:commandButton value="Enviar" update="ventas" action="#{ventaControlador.crearVenta()}" styleClass="ui-priority-primary" />
                                             <input type="reset" class="btn btn-default" value="Limpiar"/>
                                         </div>
                                     </div>
@@ -408,12 +409,11 @@
         </div>
 
         <!-- Bootstrap core JavaScript-->
-        <script src="../js/calendario.js"></script>
-        <script src="../vendor/jquery/jquery.min.js"></script>
+       
         <script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
         <!-- Core plugin JavaScript-->
-        <script src="../vendor/jquery-easing/jquery.easing.min.js"></script>
+       
 
         <!-- Custom scripts for all pages-->
         <script src="../js/sb-admin-2.min.js"></script>

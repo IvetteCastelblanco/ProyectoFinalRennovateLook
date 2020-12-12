@@ -26,8 +26,13 @@
 
         <!-- Script -->
         <script src="../js/sweetalert2.min.js"></script>
-        <script src="../js/jquery-3.4.1.min.js"></script>
+
         <script src="../datepicker/js/bootstrap-datepicker.min.js"></script>
+         <style type="text/css">
+           .ui-growl {
+               top:150px;
+           }
+       </style>
 
     </h:head>
 
@@ -351,7 +356,7 @@
                                 <p class="pb-0 mb-0">Te invitamos a contactarnos, te responderemos a la brevedad.</p>
                                 <p class="text-danger small pt-0 nt-0">*Todos los campos son obligatorios</p>
                                 <h:form class="form-container2" id="inventario" onsubmit="return validarforinventario(event)">
-
+                                    <p:growl id="growlFormAgenda" showDetail="true" sticky="true" />
                                     <div class="row form-group">
                                         <label for="marca" class="col-form-label col-md-4"><b>Nombre de producto: *</b></label>
                                         <div class="col-md-8">
@@ -383,14 +388,16 @@
                                     <div class="row form-group">
                                         <label for="nombre" class="col-form-label col-md-4"><b>Proveedor: *</b></label>
                                         <div class="col-md-8">
-                                            <p:inputText value="#{inventarioControlador.proveedores}" />
+                                            <p:selectOneMenu value="#{inventarioControlador.proveedores}">
+                                                <f:selectItems value="#{inventarioControlador.listaProv}" var="lprov" itemLabel="#{lprov.nombresProveedor}#{lprov.apellidosProveedor}" itemValue="#{lprov.idProveedor}"></f:selectItems>
+                                            </p:selectOneMenu>
                                         </div>
                                     </div>
 
                                     <br/>
                                     <div class="form-group">
                                         <div class="col-xs-offset-3 col-xs-9">
-                                            <p:commandButton value="Enviar" action="#{inventarioControlador.crearProducto()}"/>
+                                            <p:commandButton value="Enviar" update="inventario"  action="#{inventarioControlador.crearProducto()}"/>
                                             <input type="submit" class="btn btn-primary"  value="Cancelar"/>
                                         </div>
                                     </div>
@@ -404,7 +411,7 @@
 
         <!-- Bootstrap core JavaScript-->
         <script src="../js/calendario.js"></script>
-        <script src="../vendor/jquery/jquery.min.js"></script>
+
         <script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
         <!-- Core plugin JavaScript-->

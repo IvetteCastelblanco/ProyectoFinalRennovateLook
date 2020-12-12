@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="0" uuid="972a31ba-c213-44e2-9e0e-324f65ff5534">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Title" fontName="Arial" fontSize="26" isBold="true" pdfFontName="Helvetica-Bold"/>
+	<style name="SubTitle" forecolor="#666666" fontName="Arial" fontSize="18"/>
+	<style name="Column header" forecolor="#FFFFFF" fontName="Arial" fontSize="12" isBold="true"/>
+	<style name="Detail" fontName="Arial" fontSize="12"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT
+     productos.`nombre_producto` AS productos_nombre_producto,
+     productos.`cantidad_producto` AS productos_cantidad_producto,
+     productos.`precio_compra_producto` AS productos_precio_compra_producto,
+     productos.`precio_venta_producto` AS productos_precio_venta_producto,
+     productos.`id_fk_proveedor` AS productos_id_fk_proveedor
+FROM
+     `productos` productos]]>
+	</queryString>
+	<field name="productos_nombre_producto" class="java.lang.String"/>
+	<field name="productos_cantidad_producto" class="java.lang.String"/>
+	<field name="productos_precio_compra_producto" class="java.lang.Float"/>
+	<field name="productos_precio_venta_producto" class="java.lang.Float"/>
+	<field name="productos_id_fk_proveedor" class="java.lang.Integer"/>
+	<background>
+		<band height="575" splitType="Stretch">
+			<image>
+				<reportElement x="34" y="430" width="260" height="115" uuid="42100c69-31e4-40ed-b2cf-c62c5aa7ca80"/>
+				<imageExpression><![CDATA["C:\\Users\\IVETH CASTELBLANCO\\Downloads\\RennovateLooks\\web\\img\\Logo2.jpg"]]></imageExpression>
+			</image>
+			<image>
+				<reportElement x="324" y="339" width="417" height="206" uuid="f6928acd-a0a5-48fc-a22a-e4c7982ceeaf"/>
+				<imageExpression><![CDATA["C:\\Users\\IVETH CASTELBLANCO\\Downloads\\inventario.jpg"]]></imageExpression>
+			</image>
+		</band>
+	</background>
+	<title>
+		<band height="104" splitType="Stretch">
+			<staticText>
+				<reportElement style="Title" x="96" y="0" width="622" height="67" uuid="df72e812-d83b-4c6a-93c4-d9740e676817"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="54" isBold="false" pdfFontName="Helvetica"/>
+				</textElement>
+				<text><![CDATA[Reporte Inventario]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="SubTitle" x="158" y="67" width="560" height="37" uuid="72b240a0-cc94-469f-baa1-3d4a6e90a6fc"/>
+				<textElement textAlignment="Right">
+					<font size="26"/>
+				</textElement>
+				<text><![CDATA[Generado Por: Jhon Mahecha]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="25" splitType="Stretch">
+			<frame>
+				<reportElement mode="Opaque" x="97" y="5" width="705" height="20" backcolor="#666666" uuid="69f96d4c-686d-4977-a401-4ac713efdcfa"/>
+				<staticText>
+					<reportElement style="Column header" x="0" y="0" width="141" height="15" uuid="5f4565d1-8d66-43e9-aced-9b2219c4a022"/>
+					<text><![CDATA[Nombre Producto]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="Column header" x="141" y="0" width="141" height="15" uuid="dfbc88f6-5d1a-46fc-8565-eeffa5cef5d7"/>
+					<text><![CDATA[Cantidad Producto]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="Column header" x="282" y="0" width="141" height="15" uuid="120e8251-b893-4cbc-8b8f-08bfcba462bb"/>
+					<text><![CDATA[Precio Compra]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="Column header" x="423" y="0" width="141" height="15" uuid="e38051a9-ee45-4ae1-a9f9-1aa73e27ad41"/>
+					<text><![CDATA[Precio  Venta]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="Column header" x="564" y="0" width="141" height="15" uuid="d22af391-b1a1-4bec-82fd-3ce2b20dae5d"/>
+					<text><![CDATA[Id Proveedor]]></text>
+				</staticText>
+			</frame>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="21" splitType="Stretch">
+			<frame>
+				<reportElement x="97" y="1" width="705" height="15" uuid="a825a862-4691-40f7-9e92-65ededc799e6"/>
+				<textField>
+					<reportElement style="Detail" x="0" y="0" width="141" height="15" uuid="6146d4bd-ba84-4f36-bf21-33a331fc287f"/>
+					<textFieldExpression><![CDATA[$F{productos_nombre_producto}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement style="Detail" x="141" y="0" width="141" height="15" uuid="6d55a848-8cef-495d-8dd2-a1ffed87d59b"/>
+					<textFieldExpression><![CDATA[$F{productos_cantidad_producto}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement style="Detail" x="282" y="0" width="141" height="15" uuid="9290dbaa-78f0-4f35-8305-688081a6d928"/>
+					<textFieldExpression><![CDATA[$F{productos_precio_compra_producto}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement style="Detail" x="423" y="0" width="141" height="15" uuid="02a699bc-208c-4565-891c-55b11189e5a2"/>
+					<textFieldExpression><![CDATA[$F{productos_precio_venta_producto}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement style="Detail" x="564" y="0" width="141" height="15" uuid="85b2d75e-301d-4cbc-9c90-9cbcc019a1c7"/>
+					<textFieldExpression><![CDATA[$F{productos_id_fk_proveedor}]]></textFieldExpression>
+				</textField>
+			</frame>
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="97" y="16" width="705" height="1" uuid="ca91631e-b79e-445f-b474-eab07bdcf9df"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="39" splitType="Stretch">
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement style="Column header" x="671" y="0" width="131" height="20" forecolor="#000000" uuid="607bd4da-d555-4c11-83f5-6f59ff2dd2cb"/>
+				<textElement textAlignment="Right">
+					<font size="12" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

@@ -2,11 +2,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:p="http://primefaces.org/ui"
-      xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:h="http://xmlns.jcp.org/jsf/html">
-
-
 
     <h:head>
 
@@ -18,12 +14,18 @@
         <title>Rennovate Look</title>
 
         <!-- Custom fonts for this template-->
-        <link href="../vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css" />
+        <link href="../vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css"/>
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Raleway&amp;display=swap" />
 
         <!-- Custom styles for this template-->
         <link href="../css/sb-admin-2.min.css" rel="stylesheet"/>
         <link rel="stylesheet" href="../css/sb-admin-2.css"/>
+        <link rel="stylesheet" href="../datepicker/css/bootstrap-datepicker.css"/>
+
+        <!-- Script -->
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+        <script src="../js/jquery-3.4.1.min.js"></script>
+        <script src="../datepicker/js/bootstrap-datepicker.min.js"></script>
 
     </h:head>
 
@@ -60,7 +62,7 @@
                         <div class="bg-white py-2 collapse-inner rounded">
                             <h6 class="collapse-header">Otras Opciones:</h6>
                             <a class="collapse-item" href="formulario_ventas.xhtml">Registrar Ventas</a>
-                            <a class="collapse-item" href="tablaVentas.xhtml">Ver Ventas</a>
+                            <a class="collapse-item" href="tabla.xhtml">Ver Ventas</a>
                         </div>
                     </div>
                 </li>
@@ -75,7 +77,7 @@
                         <div class="bg-white py-2 collapse-inner rounded">
                             <h6 class="collapse-header">Otras Opciones:</h6>
                             <a class="collapse-item" href="formulario_agenda.xhtml">Registrar Agendas</a>
-                            <a class="collapse-item" href="tablaAgenda.xhtml">Ver Agendas</a>
+                            <a class="collapse-item" href="tabla.xhtml">Ver Agendas</a>
                         </div>
                     </div>
                 </li>
@@ -90,7 +92,22 @@
                         <div class="bg-white py-2 collapse-inner rounded">
                             <h6 class="collapse-header">Otras Opciones:</h6>
                             <a class="collapse-item" href="formulario_inventario.xhtml">Registrar Inventarios</a>
-                            <a class="collapse-item" href="tablaInventario.xhtml">Ver Inventarios</a>
+                            <a class="collapse-item" href="tabla.xhtml">Ver Inventarios</a>
+                        </div>
+                    </div>
+                </li>
+
+                <!-- Menu de los Modulos -->
+                <li class="nav-item">
+                    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseFive" aria-expanded="true" aria-controls="collapseFive">
+                        <i class="fas fa-fw fa-wrench"></i>
+                        <span>Cotizaciones</span>
+                    </a>
+                    <div id="collapseFive" class="collapse" aria-labelledby="headingFive" data-parent="#accordionSidebar">
+                        <div class="bg-white py-2 collapse-inner rounded">
+                            <h6 class="collapse-header">Otras Opciones:</h6>
+                            <a class="collapse-item" href="formulario_cotizaciones.xhtml">Registrar Cotizaciones</a>
+                            <a class="collapse-item" href="tabla.xhtml">Ver Cotizaciones</a>
                         </div>
                     </div>
                 </li>
@@ -113,8 +130,10 @@
                         <div class="bg-white py-2 collapse-inner rounded">
                             <h6 class="collapse-header">Otra Opcion:</h6>
                             <a class="collapse-item" href="reportes_ventas.xhtml">Reporte Ventas</a>
-                            <a class="collapse-item" href="reportes_ventas.xhtml">Reporte Agenda</a>
-                            <a class="collapse-item" href="reportes_ventas.xhtml">Reporte Inventario</a>
+                            <a class="collapse-item" href="reportes_agenda.xhtml">Reporte Agenda</a>
+                            <a class="collapse-item" href="reportes_inventario.xhtml">Reporte Inventario</a>
+                            <a class="collapse-item" href="reportes_usuarios.xhtml">Reporte Usuarios</a>
+
                         </div>
                     </div>
                 </li>
@@ -137,7 +156,7 @@
                         <div class="bg-white py-2 collapse-inner rounded">
                             <h6 class="collapse-header">Otra Opcion:</h6>
                             <a class="collapse-item" href="formulario_crear_usuario.xhtml">Crear Usuario</a>
-                            <a class="collapse-item" href="tablaUsuarios.xhtml">Ver Usuarios</a>
+                            <a class="collapse-item" href="tabla.xhtml">Ver Usuarios</a>
                         </div>
                     </div>
                 </li>
@@ -309,7 +328,7 @@
                             <li class="nav-item dropdown no-arrow">
                                 <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     <span class="mr-2 d-none d-lg-inline text-gray-600 small">Jhon Mahecha</span>
-                                    <img class="img-profile rounded-circle" src="../img/imagen-7.jpeg"/>
+                                    <img class="img-profile rounded-circle" src="../img/Servicios/imagen-7.jpeg"/>
                                 </a>
                                 <!-- Desplegable - Información del usuario -->
                                 <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
@@ -338,81 +357,56 @@
                     </nav>
                     <!-- Fin de la barra superior -->
 
-                    <!-- Formulario -->
-                    <div class="container">
-                        <div class="row justify-content-center mt-2 pt-1">
-                            <div class="col-md-7">
-                                <h1 class="display-4">Crear Usuario</h1>
-                                <hr class="bg-info"/>
-                                <p class="pb-0 mb-0">Te invitamos a contactarnos, te responderemos a la brevedad.</p>
-                                <p class="text-danger small pt-0 nt-0">*Todos los campos son obligatorios</p>
-                                <h:form class="form-container2" id="usuarios" onsubmit="return validar()">
-                                    <p:growl id="growlFormAgenda" showDetail="true" sticky="true" />
-                                    <div class="row form-group">
-                                        <label for="id" class="col-form-label col-md-4">Identificacion: *</label>
-                                        <div class="col-md-8">
-                                            <p:inputText value="#{usuariosControlador.emp.idEmpleado}" />
-                                        </div>
+                    <div class="container-fluid">
+
+                        <!-- Page Heading -->
+                        <h:form>
+                            <h:commandLink class="btn btn-info" action="#{agendaControlador.descargaReporte()}" value="Reportes" ></h:commandLink> 
+                        </h:form>
+
+
+                        <!-- Content Row -->
+                        <div class="row" style="justify-content: center" >
+
+                            <div class="col-xl-8 col-lg-7">
+
+                                <!-- Bar Chart -->
+                                <div class="card shadow mb-4" style="text-align: center">
+                                    <div class="card-header py-3">
+                                        <h6 class="m-0 font-weight-bold text-primary">Citas Por Mes</h6>
                                     </div>
-                                    <div class="row form-group">
-                                        <label for="clave" class="col-form-label col-md-4">Nombre: *</label>
-                                        <div class="col-md-8">
-                                            <p:inputText value="#{usuariosControlador.emp.nombresEmpleado}" />
+                                    <div class="card-body" style="text-align: center">
+                                        <div class="chart-bar">
+                                            <canvas id="myBarChart"></canvas>
                                         </div>
+                                        <hr/>
+
                                     </div>
-                                    <div class="row form-group">
-                                        <label for="estado" class="col-form-label col-md-4">Apellido: </label>
-                                        <div class="col-md-8">
-                                            <p:inputText value="#{usuariosControlador.emp.apellidosEmpleado}" />
-                                        </div>
-                                    </div>
-                                    <div class="row form-group">
-                                        <label for="estado" class="col-form-label col-md-4">Telefono: </label>
-                                        <div class="col-md-8">
-                                            <p:inputText value="#{usuariosControlador.emp.telefonoEmpleado}" />
-                                        </div>
-                                    </div>
-                                    <div class="row form-group">
-                                        <label for="clave" class="col-form-label col-md-4"><b>Direccion: *</b></label>
-                                        <div class="col-md-8">
-                                            <p:inputText value="#{usuariosControlador.emp.direccionEmpleado}" />
-                                        </div>
-                                    </div>
-                                    <div class="row form-group">
-                                        <label for="clave" class="col-form-label col-md-4"><b>Correo electronico: *</b></label>
-                                        <div class="col-md-8">
-                                            <p:inputText value="#{usuariosControlador.emp.emailEmpleado}" />
-                                        </div>
-                                    </div>
-                                    <div class="row form-group">
-                                        <label for="estado" class="col-form-label col-md-4"><b>Cargo del empleado:</b></label>
-                                        <div class="col-md-8">
-                                            <p:inputText value="#{usuariosControlador.emp.cargoEmpleado}" />
-                                        </div>
-                                    </div>
-                                    <div class="row form-group">
-                                        <label for="clave" class="col-form-label col-md-4"><b>Contraseña: *</b></label>
-                                        <div class="col-md-8">
-                                            <p:inputText value="#{usuariosControlador.emp.claveEmpleado}" />
-                                        </div>
-                                    </div>
-                                    <br/>
-                                    <div class="form-group">
-                                        <div class="col-xs-offset-3 col-xs-9">
-                                            <p:commandButton value="Enviar" update="usuarios" action="#{usuariosControlador.crearProducto()}"/>
-                                            <input type="reset" class="btn btn-default" value="Limpiar"/>
-                                        </div>
-                                    </div>
-                                </h:form>
+                                </div>
+
+                            </div>
+
+
+                        </div>
+
+                    </div>
+                    <!-- /.container-fluid -->
+
+                    <!-- Footer -->
+                    <footer class="sticky-footer bg-white">
+                        <div class="container my-auto">
+                            <div class="copyright text-center my-auto">
+                                <span>colombia &copy; Rennovate Look 2020</span>
                             </div>
                         </div>
-                    </div>
+                    </footer>
+                    <!-- End of Footer -->
+
                 </div>
             </div>
         </div>
-
-
         <!-- Bootstrap core JavaScript-->
+        <script src="../js/calendario.js"></script>
         <script src="../vendor/jquery/jquery.min.js"></script>
         <script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
@@ -423,12 +417,16 @@
         <script src="../js/sb-admin-2.min.js"></script>
 
         <!-- Page level plugins -->
+        <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
         <script src="../vendor/chart.js/Chart.min.js"></script>
 
         <!-- Page level custom scripts -->
         <script src="../js/demo/chart-area-demo.js"></script>
         <script src="../js/demo/chart-pie-demo.js"></script>
+        <script src="../js/demo/chart-bar-demo.js"></script>
+        <script src="../js/grafico.js"></script>
 
     </h:body>
+
 
 </html>
